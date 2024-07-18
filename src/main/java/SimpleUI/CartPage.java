@@ -60,7 +60,7 @@ public class CartPage extends ProductsPage {
     private final SelenideElement postal_code = $(By.xpath("//input[@name='postalCode']"));
     private final SelenideElement continue_button = $(By.xpath("//input[@name='continue']"));
 
-    public CartPage UserInfo(String FirstName, String LastName, String PostalCode){
+    public CartPage UserInfo(String FirstName, String LastName, String PostalCode) {
         first_name.sendKeys(FirstName);
         last_name.sendKeys(LastName);
         postal_code.sendKeys(PostalCode);
@@ -69,7 +69,8 @@ public class CartPage extends ProductsPage {
     }
 
     private final SelenideElement finish_button = $(By.xpath("//button[@name='finish']"));
-    public CartPage Overview(){
+
+    public CartPage Overview() {
         /*
         Локаторы одни и те же на страницах, используем магию копипасты для наших 2 полей(если в ТЗ их больше,
         то можно и все проверить)
@@ -95,11 +96,10 @@ public class CartPage extends ProductsPage {
     private final SelenideElement ty = $(By.xpath("//h2[.='Thank you for your order!']"));
     private final SelenideElement order_info = $(By.xpath("//div[.='Your order has been dispatched, and will arrive just as fast as the pony can get there!']"));
     private final SelenideElement empty_cart = $(By.xpath("//a[@class='shopping_cart_link']"));
-
     private final SelenideElement home_button = $(By.xpath("//button[.='Back Home']"));
 
     //Последний метод можно сделать void, поскольку тест заканчивается и возвращать ничего не нужно.
-    public void Completed(WebDriver driver){
+    public void Completed(WebDriver driver) {
         /*
         В данном методе проверяем наличие картинки и информационных сообщений о заказе.
         И на последок сверям текущий урл с условно "правильным".
@@ -111,7 +111,7 @@ public class CartPage extends ProductsPage {
 
         home_button.click();
         String CurrentUrl = driver.getCurrentUrl();
-        if(LastUrl.equals(CurrentUrl)){
+        if (LastUrl.equals(CurrentUrl)) {
             System.out.println("Exactly");
         } else {
             throw new RuntimeException("После клика по кнопке Finish не последовало редиректа," +

@@ -67,7 +67,6 @@ public class BuyingTest {
         driver.get(BASE_URL);
         driver.manage().window().maximize();
     }
-
     /*
     Аннотации нужны для структурированного отображения тест-кейса в Allure отчёте.
     */
@@ -91,10 +90,11 @@ public class BuyingTest {
                         RandomName,
                         RandomSurname,
                         RandomAddress
-                );
+                )
+                .Overview()
+                .Completed(driver);
 
     }
-
     /*
     После прохождения теста driver будет выключен, данный метод нужен для того,
     чтобы после прохождения теста запущенный driver не "висел" в Диспетчере задач(ну и не ел оперативку)

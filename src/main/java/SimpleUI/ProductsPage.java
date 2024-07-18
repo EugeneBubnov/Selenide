@@ -49,4 +49,3 @@ public class ProductsPage {
         return page(CartPage.class);
     }
 }
-
