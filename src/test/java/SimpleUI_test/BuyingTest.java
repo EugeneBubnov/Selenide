@@ -35,7 +35,7 @@ public class BuyingTest {
      */
     WebDriver driver;
     Integer ProductId = 1;
-    Faker faker = new Faker(Locale.of("ru-RU"));
+    Faker faker = new Faker();
     String RandomName = faker.name().firstName();
     String RandomSurname = faker.name().lastName();
     String RandomAddress = faker.address().fullAddress();
@@ -67,6 +67,7 @@ public class BuyingTest {
         driver.get(BASE_URL);
         driver.manage().window().maximize();
     }
+
     /*
     Аннотации нужны для структурированного отображения тест-кейса в Allure отчёте.
     */
@@ -86,15 +87,11 @@ public class BuyingTest {
                 .SignIn()
                 .SelectProduct(ProductId)
                 .Checkout(ProductId)
-                .UserInfo(
-                        RandomName,
-                        RandomSurname,
-                        RandomAddress
-                )
+                .UserInfo(RandomName, RandomSurname, RandomAddress)
                 .Overview()
                 .Completed(driver);
-
     }
+
     /*
     После прохождения теста driver будет выключен, данный метод нужен для того,
     чтобы после прохождения теста запущенный driver не "висел" в Диспетчере задач(ну и не ел оперативку)

@@ -2,6 +2,7 @@ package SimpleUI;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,6 +19,7 @@ public class CartPage extends ProductsPage {
     private final SelenideElement checkout_button = $(By.xpath("//button[@name='checkout']"));
 
     //По единому id спарсим данные для дальнейшего сравнения цены и названия.
+    @Step("Проверить данные из разных шагов(предыдущего и текущего).")
     public CartPage Checkout(Integer id) {
         SelenideElement element = $(By.xpath("(//div[@class='inventory_item_name '])[" + id + "]"));
         SelenideElement price = $(By.xpath("(//div[@data-test='inventory-list']/div)[" + id + "]" +
@@ -60,7 +62,9 @@ public class CartPage extends ProductsPage {
     private final SelenideElement postal_code = $(By.xpath("//input[@name='postalCode']"));
     private final SelenideElement continue_button = $(By.xpath("//input[@name='continue']"));
 
+    @Step("Ввести данные покупателя.")
     public CartPage UserInfo(String FirstName, String LastName, String PostalCode) {
+        checkout_button.click();
         first_name.sendKeys(FirstName);
         last_name.sendKeys(LastName);
         postal_code.sendKeys(PostalCode);
@@ -70,6 +74,7 @@ public class CartPage extends ProductsPage {
 
     private final SelenideElement finish_button = $(By.xpath("//button[@name='finish']"));
 
+    @Step("Снова сравнить данные из разных шагов(предыдущего и текущего)")
     public CartPage Overview() {
         /*
         Локаторы одни и те же на страницах, используем магию копипасты для наших 2 полей(если в ТЗ их больше,
@@ -99,6 +104,7 @@ public class CartPage extends ProductsPage {
     private final SelenideElement home_button = $(By.xpath("//button[.='Back Home']"));
 
     //Последний метод можно сделать void, поскольку тест заканчивается и возвращать ничего не нужно.
+    @Step("Проверить наличие картинки, сообщений о заказе, а также счётчик значка корзины")
     public void Completed(WebDriver driver) {
         /*
         В данном методе проверяем наличие картинки и информационных сообщений о заказе.
