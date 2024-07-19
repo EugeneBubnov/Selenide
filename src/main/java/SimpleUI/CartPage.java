@@ -1,6 +1,7 @@
 package SimpleUI;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.HoverOptions;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -44,7 +45,7 @@ public class CartPage extends ProductsPage {
         TotalPriceCart = Float.valueOf(PriceFromCart);
         /*
         Если всё окей, то продолжим путь покупателя,
-        если не окей, то бросит соответствующее исключение.
+        если нет, то получим соответствующее исключение.
          */
         if (TotalPriceGrid.equals(TotalPriceCart) && NameFromGrid.equals(NameFromCart)) {
             System.out.println("good");
@@ -52,10 +53,8 @@ public class CartPage extends ProductsPage {
         } else {
             throw new RuntimeException("Данные из корзины не совпадают с заказом.");
         }
-
         System.out.println(TotalPriceGrid);
         cart_counter.click();
-
         //Поскольку действия остаются в рамках оформления заказа, оставляю тест в текущем классе.
         return this;
     }
@@ -113,10 +112,10 @@ public class CartPage extends ProductsPage {
         В данном методе проверяем наличие картинки, информационных сообщений о заказе и счётчик корзины.
         На последок сверяем текущий урл с условно "правильным".
         */
-        img_pony.hover().isDisplayed();
-        ty.hover().isDisplayed();
-        order_info.hover().isDisplayed();
-        empty_cart.is(Condition.empty);
+        img_pony.hover().shouldBe(Condition.visible);
+        ty.hover().shouldBe(Condition.visible);
+        order_info.hover().shouldBe(Condition.visible);
+        empty_cart.shouldBe(Condition.empty);
 
         home_button.click();
         String CurrentUrl = driver.getCurrentUrl();
