@@ -71,8 +71,8 @@ public class BuyingTest {
     @Test
     @Epic("Swag Labs")
     @Feature("Shopping")
-    @DisplayName("Buying clothes")
-    public void BuyingTShorts() throws AWTException, InterruptedException {
+    @DisplayName("Buying T-Short")
+    public void BuyingTShort() throws AWTException, InterruptedException {
         /*
         При помощи паттерна проектирования Builder собираем тест.
         В процессе выполнения теста, отработавшие классы будут
