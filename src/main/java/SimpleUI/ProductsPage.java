@@ -22,7 +22,7 @@ public class ProductsPage {
     @Step("Выбрать продукт")
     public CartPage SelectProduct(Integer id) {
         for (int i = 1; i <= ProductsList.size(); i++) {
-            //Проверка на пустой список.
+            //Проверка на пустой список и нахождения id в рамках ProductList'a
             if (ProductsList.isEmpty() || id > ProductsList.size() || id < 1) {
                 throw new RuntimeException("Список продуктов пустой, либо выбран несуществующий id");
             } else {
