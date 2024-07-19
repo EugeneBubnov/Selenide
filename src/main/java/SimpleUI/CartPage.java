@@ -28,9 +28,9 @@ public class CartPage extends ProductsPage {
         SelenideElement price = $(By.xpath("(//div[@data-test='inventory-list']/div)[" + id + "]" +
                 "//div[@class='inventory_item_price']"));
         /*
-        Получаем локатор цены и забираем из него значение, убирая знак доллара(+ преобразуем во Float.)
+        Получаем локатор цены и забираем из него значение, убираем знак доллара(+ преобразуем во Float.)
         Далее получаем название выбранного товара из списка.
-        И перейдём в корзину.
+        И переходим в корзину.
         */
         PriceFromGrid = price.getText().replace("$", "");
         TotalPriceGrid = Float.valueOf(PriceFromGrid);
