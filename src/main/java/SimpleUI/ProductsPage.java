@@ -23,7 +23,7 @@ public class ProductsPage {
     public CartPage SelectProduct(Integer id) {
         for (int i = 1; i <= ProductsList.size(); i++) {
             //Проверка на пустой список.
-            if (ProductsList.isEmpty() || id > ProductsList.size()) {
+            if (ProductsList.isEmpty() || id > ProductsList.size() || id < 1) {
                 throw new RuntimeException("Список продуктов пустой, либо выбран несуществующий id");
             } else {
                 SelenideElement element = $(By.xpath("(//div[@class='inventory_item_name '])[" + i + "]"));

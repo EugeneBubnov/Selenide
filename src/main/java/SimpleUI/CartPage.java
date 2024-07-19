@@ -108,7 +108,7 @@ public class CartPage extends ProductsPage {
     public void Completed(WebDriver driver) {
         /*
         В данном методе проверяем наличие картинки и информационных сообщений о заказе.
-        И на последок сверям текущий урл с условно "правильным".
+        И на последок сверяем текущий урл с условно "правильным".
         */
         img_pony.hover().isDisplayed();
         ty.hover().isDisplayed();

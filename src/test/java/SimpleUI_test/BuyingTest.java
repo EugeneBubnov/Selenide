@@ -24,7 +24,6 @@ import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.HashMap;
-import java.util.Locale;
 
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 import static org.openqa.selenium.OutputType.BYTES;
@@ -32,6 +31,7 @@ import static org.openqa.selenium.OutputType.BYTES;
 public class BuyingTest {
     /*
     Предустановки для успешного прохождения теста и генерации Allure отчёта.
+    Также используем библиотеку Faker для рандомных данных.
      */
     WebDriver driver;
     Integer ProductId = 1;
@@ -68,9 +68,6 @@ public class BuyingTest {
         driver.manage().window().maximize();
     }
 
-    /*
-    Аннотации нужны для структурированного отображения тест-кейса в Allure отчёте.
-    */
     @Test
     @Epic("Swag Labs")
     @Feature("Shopping")
@@ -80,7 +77,6 @@ public class BuyingTest {
         При помощи паттерна проектирования Builder собираем тест.
         В процессе выполнения теста, отработавшие классы будут
         возвращать нужный/следующий класс(в конце метода установлен return(CurrentPage.class)).
-
         p.s. В методе SelectProduct нужно выбрать id от 1 до 6
          */
         new LoginPage()
