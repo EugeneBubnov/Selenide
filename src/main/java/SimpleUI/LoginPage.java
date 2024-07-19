@@ -11,7 +11,6 @@ import java.time.Duration;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
-//Страница авторизации, данные для входа спарсим при помощи xPath
 public class LoginPage {
     //Входные данные
     String Login = "standard_user";
@@ -31,7 +30,7 @@ public class LoginPage {
         Даём подгрузиться алерту.
         Далее запускаем робота и нажимаем Enter, чтобы убрать алерт с экрана.
         */
-        Thread.sleep(Duration.ofSeconds(2));
+        Thread.sleep(Duration.ofSeconds(1));
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         //Возвращаем следующий класс по паттерну проектирования PageObject.
