@@ -9,7 +9,10 @@ import org.openqa.selenium.WebDriver;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage extends ProductsPage {
-    //Создаём переменные для сравнения товара, который был добавлен в корзину из общего списка.
+    /*
+    Создаём переменные для сравнения товара, который был добавлен в корзину из общего списка.
+    + Переменные для значений на текущей странице.
+    */
     String NameFromCart;
     String PriceFromCart;
     Float TotalPriceCart;
@@ -18,7 +21,7 @@ public class CartPage extends ProductsPage {
     private final SelenideElement cart_product_price = $(By.xpath("//div[@class='inventory_item_price']"));
     private final SelenideElement checkout_button = $(By.xpath("//button[@name='checkout']"));
 
-    //По единому id спарсим данные для дальнейшего сравнения цены и названия.
+    //По указанному id парсим данные для дальнейшего сравнения цены и названия.
     @Step("Проверить данные из разных шагов(предыдущего и текущего).")
     public CartPage Checkout(Integer id) {
         SelenideElement element = $(By.xpath("(//div[@class='inventory_item_name '])[" + id + "]"));
@@ -26,7 +29,7 @@ public class CartPage extends ProductsPage {
                 "//div[@class='inventory_item_price']"));
         /*
         Получаем локатор цены и забираем из него значение, убирая знак доллара(+ преобразуем во Float.)
-        Далее название выбранного товара из списка.
+        Далее получаем название выбранного товара из списка.
         И перейдём в корзину.
         */
         PriceFromGrid = price.getText().replace("$", "");
@@ -78,7 +81,7 @@ public class CartPage extends ProductsPage {
     public CartPage Overview() {
         /*
         Локаторы одни и те же на страницах, используем магию копипасты для наших 2 полей(если в ТЗ их больше,
-        то можно и все проверить)
+        то сравниваем их)
         Получаем цену и название товара, далее сравниваем.
          */
         NameFromCart = cart_product_name.getText();
@@ -86,7 +89,7 @@ public class CartPage extends ProductsPage {
         TotalPriceCart = Float.valueOf(PriceFromCart);
         /*
         Если всё окей, то продолжим путь покупателя,
-        если не окей, то бросит соответствующее исключение.
+        если нет, то тест бросит соответствующее исключение.
          */
         if (TotalPriceGrid.equals(TotalPriceCart) && NameFromGrid.equals(NameFromCart)) {
             System.out.println("good");
@@ -120,7 +123,7 @@ public class CartPage extends ProductsPage {
         if (LastUrl.equals(CurrentUrl)) {
             System.out.println("Exactly");
         } else {
-            throw new RuntimeException("После клика по кнопке Finish не последовало редиректа," +
+            throw new RuntimeException("После клика по кнопке Back Home не последовало редиректа," +
                     " свяжитесь с разработчиком");
         }
     }
