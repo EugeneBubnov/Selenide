@@ -32,7 +32,7 @@ public class BuyingTest {
     /*
     Предустановки для успешного прохождения теста и генерации Allure отчёта.
     Также используем библиотеку Faker для рандомных данных.
-     */
+    */
     WebDriver driver;
     Integer ProductId = 1;
     Faker faker = new Faker();
@@ -78,7 +78,7 @@ public class BuyingTest {
         В процессе выполнения теста, отработавшие классы будут
         возвращать нужный/следующий класс(в конце метода установлен return page(Нужный_класс.class)).
         p.s. В методе SelectProduct нужно выбрать id от 1 до 6, установлена валидация.
-         */
+        */
         new LoginPage()
                 .SignIn()
                 .SelectProduct(ProductId)
@@ -92,7 +92,7 @@ public class BuyingTest {
     После прохождения теста driver будет выключен.
     Также установлены пост-настройки для генерации отчёта и если тест упадёт, то мы получим логи из консоли браузера
     и скриншот(на каком шаге упал тест).
-     */
+    */
     @AfterEach
     void killBrowser() {
         watcher.setScreenStream(new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(BYTES)));
