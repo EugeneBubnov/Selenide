@@ -22,7 +22,7 @@ public class CartPage extends ProductsPage {
     private final SelenideElement checkout_button = $(By.xpath("//button[@name='checkout']"));
 
     //По указанному id парсим данные для дальнейшего сравнения цены и названия.
-    @Step("Проверить данные из разных шагов(Products и Your Cart).")
+    @Step("Проверить данные из шагов(Products и Your Cart).")
     public CartPage Checkout(Integer id) {
         SelenideElement element = $(By.xpath("(//div[@class='inventory_item_name '])[" + id + "]"));
         SelenideElement price = $(By.xpath("(//div[@data-test='inventory-list']/div)[" + id + "]" +
@@ -77,10 +77,10 @@ public class CartPage extends ProductsPage {
 
     private final SelenideElement finish_button = $(By.xpath("//button[@name='finish']"));
 
-    @Step("Снова сравнить данные из разных шагов(Your Cart и Overview)")
+    @Step("Сравнить данные из шагов(Your Cart и Overview)")
     public CartPage Overview() {
         /*
-        Локаторы одни и те же на страницах, используем магию копипасты для наших 2 полей(если в ТЗ их больше,
+        Локаторы страницах одинаковые, используем магию копипасты для наших 2 полей(если в ТЗ их больше,
         то сравниваем их)
         Получаем цену и название товара, далее сравниваем.
          */
@@ -106,12 +106,12 @@ public class CartPage extends ProductsPage {
     private final SelenideElement empty_cart = $(By.xpath("//a[@class='shopping_cart_link']"));
     private final SelenideElement home_button = $(By.xpath("//button[.='Back Home']"));
 
-    //Последний метод можно сделать void, поскольку тест заканчивается и возвращать ничего не нужно.
+    //Последний метод можно сделать void, поскольку тест завершает работу и возвращать ничего не нужно.
     @Step("Проверить наличие картинки, сообщения о заказе, а также счётчик значка корзины")
     public void Completed(WebDriver driver) {
         /*
-        В данном методе проверяем наличие картинки и информационных сообщений о заказе.
-        И на последок сверяем текущий урл с условно "правильным".
+        В данном методе проверяем наличие картинки, информационных сообщений о заказе и счётчик корзины.
+        На последок сверяем текущий урл с условно "правильным".
         */
         img_pony.hover().isDisplayed();
         ty.hover().isDisplayed();
@@ -127,4 +127,5 @@ public class CartPage extends ProductsPage {
                     " свяжитесь с разработчиком");
         }
     }
+    //The end.
 }

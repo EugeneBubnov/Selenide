@@ -16,7 +16,7 @@ public class ProductsPage {
 
     SelenideElement cart_counter = $(By.xpath("//span[@class='shopping_cart_badge']"));
 
-    //Получаем список товаров в массиве
+    //Получаем список товаров.
     ElementsCollection ProductsList = $$(By.xpath("//div[@data-test='inventory-list']/div"));
 
     @Step("Выбрать продукт")
