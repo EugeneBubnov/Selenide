@@ -22,7 +22,7 @@ public class CartPage extends ProductsPage {
     private final SelenideElement checkout_button = $(By.xpath("//button[@name='checkout']"));
 
     //По указанному id парсим данные для дальнейшего сравнения цены и названия.
-    @Step("Проверить данные из разных шагов(предыдущего и текущего).")
+    @Step("Проверить данные из разных шагов(Products и Your Cart).")
     public CartPage Checkout(Integer id) {
         SelenideElement element = $(By.xpath("(//div[@class='inventory_item_name '])[" + id + "]"));
         SelenideElement price = $(By.xpath("(//div[@data-test='inventory-list']/div)[" + id + "]" +
@@ -77,7 +77,7 @@ public class CartPage extends ProductsPage {
 
     private final SelenideElement finish_button = $(By.xpath("//button[@name='finish']"));
 
-    @Step("Снова сравнить данные из разных шагов(предыдущего и текущего)")
+    @Step("Снова сравнить данные из разных шагов(Your Cart и Overview)")
     public CartPage Overview() {
         /*
         Локаторы одни и те же на страницах, используем магию копипасты для наших 2 полей(если в ТЗ их больше,
